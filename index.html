@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KC Nature Club Newsletter • June – August 2026</title>
-  <meta http-equiv="refresh" content="0; url=newsletter.html" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>KC Nature Club Newsletter • June – August 2026</title>
 </head>
 <body>
-  <p style="font-family:system-ui,sans-serif;text-align:center;margin-top:3rem;color:#145c45;">Loading KC Nature Club Newsletter… <a href="newsletter.html">Open the newsletter</a>.</p>
+<p style="font-family:system-ui,sans-serif;text-align:center;margin-top:3rem;color:#145c45;">Loading KC Nature Club Newsletter…</p>
+<script src="nl_part0.js"></script>
+<script src="nl_part1.js"></script>
+<script src="nl_part2.js"></script>
+<script src="nl_part3.js"></script>
+<script src="nl_part4.js"></script>
+<script>
+(function(){
+  var html = "";
+  html += (window.__NL0||"");
+  html += (window.__NL1||"");
+  html += (window.__NL2||"");
+  html += (window.__NL3||"");
+  html += (window.__NL4||"");
+  document.open();
+  document.write(html);
+  document.close();
+  Promise.all([
+    fetch('kc_college_logo.b64').then(function(r){ return r.text(); }),
+    fetch('nature_club_logo.b64').then(function(r){ return r.text(); })
+  ]).then(function(pair){
+    var elC = document.getElementById('logo-college');
+    var elN = document.getElementById('logo-nature');
+    if (elC) elC.src = 'data:image/png;base64,' + pair[0].trim();
+    if (elN) elN.src = 'data:image/png;base64,' + pair[1].trim();
+  }).catch(function(e){ console.warn(e); });
+})();
+</script>
 </body>
 </html>
